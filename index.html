@@ -1,258 +1,279 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lab UBG</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Games</title>
 
-<style>
-* {
-  box-sizing: border-box;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-body {
-  margin: 0;
-  padding: 10px 8px 30px;
-  background: #090a27;
-  color: white;
-  font-family: Arial, Helvetica, sans-serif;
-}
+    body {
+      margin: 0;
+      background: #0d1020;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
 
-.header {
-  max-width: 1900px;
-  margin: 0 auto 14px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 15px;
-}
+    header {
+      padding: 25px;
+      text-align: center;
+      background: #151a33;
+      border-bottom: 2px solid #252b50;
+    }
 
-.logo {
-  font-size: 28px;
-  font-weight: 900;
-}
+    h1 {
+      margin: 0 0 18px;
+      font-size: 32px;
+    }
 
-.search {
-  width: min(330px, 45vw);
-  padding: 12px 16px;
-  border: 0;
-  outline: 0;
-  border-radius: 18px;
-  background: #171838;
-  color: white;
-  font-size: 15px;
-}
+    #search {
+      width: 90%;
+      max-width: 500px;
+      padding: 13px 18px;
+      border: none;
+      border-radius: 10px;
+      outline: none;
+      background: #242a49;
+      color: white;
+      font-size: 16px;
+    }
 
-.search::placeholder {
-  color: #aaaac2;
-}
+    #search::placeholder {
+      color: #aaa;
+    }
 
-.games {
-  width: 100%;
-  max-width: 1900px;
-  margin: auto;
-  display: grid;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
-  gap: 32px;
-}
+    .games {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 20px;
+      padding: 30px;
+      max-width: 1400px;
+      margin: auto;
+    }
 
-.game {
-  display: block;
-  position: relative;
-  aspect-ratio: 1;
-  overflow: hidden;
-  border-radius: 20px;
-  background: #15162f;
-  text-decoration: none;
-  box-shadow: 0 4px 14px rgba(0,0,0,.18);
-  transition: transform .16s ease, box-shadow .16s ease;
-}
+    .game {
+      text-decoration: none;
+      color: white;
+      background: #171c36;
+      border-radius: 14px;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: 1px solid #252b50;
+    }
 
-.game:hover {
-  transform: translateY(-5px) scale(1.025);
-  box-shadow: 0 10px 28px rgba(0,0,0,.35);
-}
+    .game:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    }
 
-.game img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-}
+    .game img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      display: block;
+    }
 
-.game-name {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 35px 10px 10px;
-  color: white;
-  font-size: 16px;
-  font-weight: 800;
-  background: linear-gradient(
-    transparent,
-    rgba(0,0,0,.82)
-  );
-  opacity: 0;
-  transition: opacity .15s ease;
-}
+    .game-name {
+      padding: 13px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 16px;
+    }
 
-.game:hover .game-name {
-  opacity: 1;
-}
-
-.ad {
-  grid-column: 1 / -1;
-  min-height: 90px;
-  border-radius: 14px;
-  background: rgba(255,255,255,.025);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #66677e;
-  font-size: 11px;
-}
-
-/* Large screens */
-@media (max-width: 1499px) {
-  .games {
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-    gap: 26px;
-  }
-}
-
-/* Tablets */
-@media (max-width: 1049px) {
-  .games {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 20px;
-  }
-}
-
-/* Phones */
-@media (max-width: 699px) {
-  .header {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .logo {
-    text-align: center;
-  }
-
-  .search {
-    width: 100%;
-  }
-
-  .games {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 12px;
-  }
-
-  .game {
-    border-radius: 13px;
-  }
-
-  .game-name {
-    display: none;
-  }
-}
-
-@media (max-width: 430px) {
-  .games {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-</style>
+    @media (max-width: 500px) {
+      .games {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 15px;
+        gap: 12px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<header class="header">
-  <div class="logo">Game Hub</div>
-
+<header>
+  <h1>🎮 My Games</h1>
   <input
+    type="text"
     id="search"
-    class="search"
-    type="search"
     placeholder="Search games..."
+    onkeyup="searchGames()"
   >
 </header>
 
-<main class="games">
+<div class="games" id="gameList">
 
   <a class="game" href="game1.html">
-    <img src="images/game1.jpg" alt="Game 1">
-    <span class="game-name">Game 1</span>
+    <img src="https://placehold.co/600x600/171838/ffffff?text=Game+1">
+    <div class="game-name">Game 1</div>
   </a>
 
   <a class="game" href="game2.html">
-    <img src="images/game2.jpg" alt="Game 2">
-    <span class="game-name">Game 2</span>
+    <img src="https://placehold.co/600x600/181a40/ffffff?text=Game+2">
+    <div class="game-name">Game 2</div>
   </a>
 
   <a class="game" href="game3.html">
-    <img src="images/game3.jpg" alt="Game 3">
-    <span class="game-name">Game 3</span>
+    <img src="https://placehold.co/600x600/191c48/ffffff?text=Game+3">
+    <div class="game-name">Game 3</div>
   </a>
 
   <a class="game" href="game4.html">
-    <img src="images/game4.jpg" alt="Game 4">
-    <span class="game-name">Game 4</span>
+    <img src="https://placehold.co/600x600/1a1e50/ffffff?text=Game+4">
+    <div class="game-name">Game 4</div>
   </a>
 
   <a class="game" href="game5.html">
-    <img src="images/game5.jpg" alt="Game 5">
-    <span class="game-name">Game 5</span>
+    <img src="https://placehold.co/600x600/1b2058/ffffff?text=Game+5">
+    <div class="game-name">Game 5</div>
   </a>
 
   <a class="game" href="game6.html">
-    <img src="images/game6.jpg" alt="Game 6">
-    <span class="game-name">Game 6</span>
+    <img src="https://placehold.co/600x600/1c2260/ffffff?text=Game+6">
+    <div class="game-name">Game 6</div>
   </a>
 
   <a class="game" href="game7.html">
-    <img src="images/game7.jpg" alt="Game 7">
-    <span class="game-name">Game 7</span>
+    <img src="https://placehold.co/600x600/1d2468/ffffff?text=Game+7">
+    <div class="game-name">Game 7</div>
   </a>
 
   <a class="game" href="game8.html">
-    <img src="images/game8.png" alt="Game 8">
-    <span class="game-name">Game 8</span>
+    <img src="https://placehold.co/600x600/1e2670/ffffff?text=Game+8">
+    <div class="game-name">Game 8</div>
   </a>
 
   <a class="game" href="game9.html">
-    <img src="images/game9.jpg" alt="Game 9">
-    <span class="game-name">Game 9</span>
+    <img src="https://placehold.co/600x600/202878/ffffff?text=Game+9">
+    <div class="game-name">Game 9</div>
   </a>
 
   <a class="game" href="game10.html">
-    <img src="images/game10.jpg" alt="Game 10">
-    <span class="game-name">Game 10</span>
+    <img src="https://placehold.co/600x600/222a80/ffffff?text=Game+10">
+    <div class="game-name">Game 10</div>
   </a>
 
-  <div class="ad">
-    ADVERTISEMENT
-  </div>
+  <a class="game" href="game11.html">
+    <img src="https://placehold.co/600x600/242c88/ffffff?text=Game+11">
+    <div class="game-name">Game 11</div>
+  </a>
 
-</main>
+  <a class="game" href="game12.html">
+    <img src="https://placehold.co/600x600/262e90/ffffff?text=Game+12">
+    <div class="game-name">Game 12</div>
+  </a>
+
+  <a class="game" href="game13.html">
+    <img src="https://placehold.co/600x600/283098/ffffff?text=Game+13">
+    <div class="game-name">Game 13</div>
+  </a>
+
+  <a class="game" href="game14.html">
+    <img src="https://placehold.co/600x600/2a32a0/ffffff?text=Game+14">
+    <div class="game-name">Game 14</div>
+  </a>
+
+  <a class="game" href="game15.html">
+    <img src="https://placehold.co/600x600/2c34a8/ffffff?text=Game+15">
+    <div class="game-name">Game 15</div>
+  </a>
+
+  <a class="game" href="game16.html">
+    <img src="https://placehold.co/600x600/2e36b0/ffffff?text=Game+16">
+    <div class="game-name">Game 16</div>
+  </a>
+
+  <a class="game" href="game17.html">
+    <img src="https://placehold.co/600x600/3038b8/ffffff?text=Game+17">
+    <div class="game-name">Game 17</div>
+  </a>
+
+  <a class="game" href="game18.html">
+    <img src="https://placehold.co/600x600/323ac0/ffffff?text=Game+18">
+    <div class="game-name">Game 18</div>
+  </a>
+
+  <a class="game" href="game19.html">
+    <img src="https://placehold.co/600x600/343cc8/ffffff?text=Game+19">
+    <div class="game-name">Game 19</div>
+  </a>
+
+  <a class="game" href="game20.html">
+    <img src="https://placehold.co/600x600/363ed0/ffffff?text=Game+20">
+    <div class="game-name">Game 20</div>
+  </a>
+
+  <a class="game" href="game21.html">
+    <img src="https://placehold.co/600x600/3840d8/ffffff?text=Game+21">
+    <div class="game-name">Game 21</div>
+  </a>
+
+  <a class="game" href="game22.html">
+    <img src="https://placehold.co/600x600/3a42e0/ffffff?text=Game+22">
+    <div class="game-name">Game 22</div>
+  </a>
+
+  <a class="game" href="game23.html">
+    <img src="https://placehold.co/600x600/3c44e8/ffffff?text=Game+23">
+    <div class="game-name">Game 23</div>
+  </a>
+
+  <a class="game" href="game24.html">
+    <img src="https://placehold.co/600x600/3e46f0/ffffff?text=Game+24">
+    <div class="game-name">Game 24</div>
+  </a>
+
+  <a class="game" href="game25.html">
+    <img src="https://placehold.co/600x600/4048f8/ffffff?text=Game+25">
+    <div class="game-name">Game 25</div>
+  </a>
+
+  <a class="game" href="game26.html">
+    <img src="https://placehold.co/600x600/424af0/ffffff?text=Game+26">
+    <div class="game-name">Game 26</div>
+  </a>
+
+  <a class="game" href="game27.html">
+    <img src="https://placehold.co/600x600/444ce8/ffffff?text=Game+27">
+    <div class="game-name">Game 27</div>
+  </a>
+
+  <a class="game" href="game28.html">
+    <img src="https://placehold.co/600x600/464ee0/ffffff?text=Game+28">
+    <div class="game-name">Game 28</div>
+  </a>
+
+  <a class="game" href="game29.html">
+    <img src="https://placehold.co/600x600/4850d8/ffffff?text=Game+29">
+    <div class="game-name">Game 29</div>
+  </a>
+
+  <a class="game" href="game30.html">
+    <img src="https://placehold.co/600x600/4a52d0/ffffff?text=Game+30">
+    <div class="game-name">Game 30</div>
+  </a>
+
+</div>
 
 <script>
-const search = document.getElementById("search");
-const games = [...document.querySelectorAll(".game")];
+  function searchGames() {
+    const input = document.getElementById("search").value.toLowerCase();
+    const games = document.querySelectorAll(".game");
 
-search.addEventListener("input", () => {
-  const query = search.value.toLowerCase().trim();
+    games.forEach(game => {
+      const name = game.querySelector(".game-name").textContent.toLowerCase();
 
-  games.forEach(game => {
-    const name = game
-      .querySelector(".game-name")
-      .textContent
-      .toLowerCase();
-
-    game.style.display = name.includes(query) ? "" : "none";
-  });
-});
+      if (name.includes(input)) {
+        game.style.display = "";
+      } else {
+        game.style.display = "none";
+      }
+    });
+  }
 </script>
 
 </body>
