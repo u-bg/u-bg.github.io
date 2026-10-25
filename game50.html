@@ -1,39 +1,144 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Game</title>
-  <style>
-    * { box-sizing: border-box; }
-    html, body {
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      overflow: hidden;
-      background: #000;
-    }
-    .game {
-      width: 100vw;
-      height: 100vh;
-    }
-    iframe {
-      display: block;
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-  </style>
-</head>
-<body>
-  <div class="game">
-    <iframe
-      src="https://scratch.mit.edu/projects/860151753/embed"
-      title="Game"
-      allowfullscreen
-      allow="autoplay; fullscreen"
-      scrolling="no">
-    </iframe>
-  </div>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="robots" content="noindex, follow">
+        <title>Egg Dash</title>
+        <meta name="description" content="Geometry Egg Dash is a Scratch rhythm platformer. Jump an auto-running egg over spikes and gears across 3 levels, then build and share levels in the Creator.">
+        <link rel="canonical" href="https://www.rocketgames.io/game/geometry-egg-dash">
+        <style>
+            html {
+                line-height: 1.15;
+                -webkit-text-size-adjust: 100%;
+                overflow: hidden
+            }
+
+            body,html {
+                height: 100%
+            }
+
+            body {
+                font-family: sans-serif;
+                margin: 0;
+                padding: 0
+            }
+
+            .loading,.loading-error {
+                align-items: center;
+                display: flex;
+                height: 100%;
+                justify-content: center;
+                position: fixed;
+                width: 100%;
+                z-index: -1
+            }
+
+            .loading-error.hide,.loading.hide {
+                display: none
+            }
+
+            .loading:before {
+                animation: spinner-d3wgkg 1s linear infinite,opacity-anim .3s ease .5s 1 normal forwards;
+                border: 10px solid #4595e6;
+                border-radius: 50%;
+                border-right-color: #fff;
+                content: "";
+                display: block;
+                height: 50px;
+                opacity: 0;
+                width: 50px
+            }
+
+            @keyframes spinner-d3wgkg {
+                to {
+                    transform: rotate(1turn)
+                }
+            }
+
+            @keyframes opacity-anim {
+                to {
+                    opacity: 1
+                }
+            }
+
+            .game-container {
+                display: flex;
+                height: 100%;
+                justify-content: center
+            }
+
+            .game-container iframe {
+                border: none;
+                height: 100%
+            }
+        </style>
+        <script>
+            !function() {
+                let t, a = window;
+                const e = {};
+                for (; a; ) {
+                    try {
+                        if (a.frames.__tcfapiLocator) {
+                            t = a;
+                            break
+                        }
+                    } catch (t) {}
+                    if (a === window.top)
+                        break;
+                    a = a.parent
+                }
+                window.__tcfapi = function(a, c, n, o) {
+                    if (t) {
+                        const i = Math.random() + ""
+                          , r = {
+                            __tcfapiCall: {
+                                command: a,
+                                parameter: o,
+                                version: c,
+                                callId: i
+                            }
+                        };
+                        e[i] = n,
+                        t.postMessage(r, "*")
+                    } else
+                        n({
+                            cmpLoaded: !1,
+                            cmpStatus: "stub",
+                            gdprApplies: void 0,
+                            msg: "iFrame Stub: CMP (__tcfapiLocator) not found"
+                        }, !1)
+                }
+                ,
+                window.addEventListener("message", (function(t) {
+                    let a = {};
+                    try {
+                        a = "string" == typeof t.data ? JSON.parse(t.data) : t.data
+                    } catch (t) {}
+                    const c = a.__tcfapiReturn;
+                    c && "function" == typeof e[c.callId] && (e[c.callId](c.returnValue, c.success),
+                    e[c.callId] = null)
+                }
+                ), !1)
+            }();
+        </script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-YRGRPWQL1R"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+            gtag('config', 'G-YRGRPWQL1R');
+        </script>
+    </head>
+    <body>
+        <div class="loading"></div>
+        <div class="game-container">
+            <iframe id="game-iframe" src="https://files.rocketgames.io/uploads/games/g/geometry-egg-dash/files/095037/index.html" title="Geometry Egg Dash" style="width: 100%" allow="autoplay; fullscreen; focus-without-user-activation; gamepad; keyboard-map *; clipboard-write; web-share; accelerometer; magnetometer; gyroscope; microphone *" tabindex="0"></iframe>
+        </div>
+        <script src="/build/legacy/gameframe.56e9b053.js" nomodule defer></script>
+        <script src="/build/modern/gameframe.774dd7fa.js" type="module"></script>
+    </body>
 </html>
