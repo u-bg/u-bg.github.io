@@ -1,144 +1,44 @@
-<!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <meta name="robots" content="noindex, follow">
-        <title>Papa &#039;s Wingeria - KomeT</title>
-        <meta name="description" content="Play Papa&#039;s Wingeria online for free with no download or login required! Master wing-frying, sauces, and sides in this fun time-management game—try now!">
-        <link rel="canonical" href="https://www.rocketgames.io/game/papas-wingeria">
-        <style>
-            html {
-                line-height: 1.15;
-                -webkit-text-size-adjust: 100%;
-                overflow: hidden
-            }
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+        #ruffle {
+            width: 100vw; /* Full viewport width */
+            height: 100vh; /* Full viewport height */
+            position: absolute; /* Allows for the full-screen effect */
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
 
-            body,html {
-                height: 100%
-            }
-
-            body {
-                font-family: sans-serif;
-                margin: 0;
-                padding: 0
-            }
-
-            .loading,.loading-error {
-                align-items: center;
-                display: flex;
-                height: 100%;
-                justify-content: center;
-                position: fixed;
-                width: 100%;
-                z-index: -1
-            }
-
-            .loading-error.hide,.loading.hide {
-                display: none
-            }
-
-            .loading:before {
-                animation: spinner-d3wgkg 1s linear infinite,opacity-anim .3s ease .5s 1 normal forwards;
-                border: 10px solid #4595e6;
-                border-radius: 50%;
-                border-right-color: #fff;
-                content: "";
-                display: block;
-                height: 50px;
-                opacity: 0;
-                width: 50px
-            }
-
-            @keyframes spinner-d3wgkg {
-                to {
-                    transform: rotate(1turn)
-                }
-            }
-
-            @keyframes opacity-anim {
-                to {
-                    opacity: 1
-                }
-            }
-
-            .game-container {
-                display: flex;
-                height: 100%;
-                justify-content: center
-            }
-
-            .game-container iframe {
-                border: none;
-                height: 100%
-            }
-        </style>
-        <script>
-            !function() {
-                let t, a = window;
-                const e = {};
-                for (; a; ) {
-                    try {
-                        if (a.frames.__tcfapiLocator) {
-                            t = a;
-                            break
-                        }
-                    } catch (t) {}
-                    if (a === window.top)
-                        break;
-                    a = a.parent
-                }
-                window.__tcfapi = function(a, c, n, o) {
-                    if (t) {
-                        const i = Math.random() + ""
-                          , r = {
-                            __tcfapiCall: {
-                                command: a,
-                                parameter: o,
-                                version: c,
-                                callId: i
-                            }
-                        };
-                        e[i] = n,
-                        t.postMessage(r, "*")
-                    } else
-                        n({
-                            cmpLoaded: !1,
-                            cmpStatus: "stub",
-                            gdprApplies: void 0,
-                            msg: "iFrame Stub: CMP (__tcfapiLocator) not found"
-                        }, !1)
-                }
-                ,
-                window.addEventListener("message", (function(t) {
-                    let a = {};
-                    try {
-                        a = "string" == typeof t.data ? JSON.parse(t.data) : t.data
-                    } catch (t) {}
-                    const c = a.__tcfapiReturn;
-                    c && "function" == typeof e[c.callId] && (e[c.callId](c.returnValue, c.success),
-                    e[c.callId] = null)
-                }
-                ), !1)
-            }();
-        </script>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-YRGRPWQL1R"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-            gtag('js', new Date());
-            gtag('config', 'G-YRGRPWQL1R');
-        </script>
-    </head>
-    <body>
-        <div class="loading"></div>
-        <div class="game-container">
-            <iframe id="game-iframe" src="https://files.rocketgames.io/player/flash-077bf8864223.html#swf=https%3A%2F%2Ffiles.rocketgames.io%2Fuploads%2Fgames%2Fp%2Fpapas-wingeria%2Ffiles%2Fpapas-wingeria-eb7b36.swf" title="Papa&#039;s Wingeria" style="aspect-ratio: 800/600" allow="autoplay; fullscreen; focus-without-user-activation; gamepad; keyboard-map *; clipboard-write; web-share; accelerometer; magnetometer; gyroscope; microphone *" tabindex="0"></iframe>
-        </div>
-        <script src="/build/legacy/gameframe.56e9b053.js" nomodule defer></script>
-        <script src="/build/modern/gameframe.774dd7fa.js" type="module"></script>
-    </body>
+<body>
+    <script src="https://ubghyper.github.io/GameList.github.io/ruffle/ruffle.js"></script>
+    
+    <div id='ruffle'></div>
+    
+    <script>
+        window.RufflePlayer = window.RufflePlayer || {};
+        window.addEventListener("DOMContentLoaded", start_Ruffle, false);
+        
+        function start_Ruffle() {
+            let ruffle = window.RufflePlayer.newest();
+            let player = ruffle.createPlayer();
+            let container = document.getElementById("ruffle");
+            container.appendChild(player);
+            player.load("https://ubghyper.github.io/GameList.github.io/Papas-Wing/papaswingeria.swf");
+            
+            // Resize player to fill container
+            player.style.width = '100%';
+            player.style.height = '100%';
+        }
+    </script>
+</body>
 </html>
