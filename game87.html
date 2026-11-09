@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dublix</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #000;
+}
+
+.game-container {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100dvh;
+    overflow: hidden;
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+    overflow: hidden;
+}
+</style>
+</head>
+
+<body>
+<div class="game-container">
+    <iframe
+        src="https://d1imv5hmyw4kfp.cloudfront.net/2025/unity4/dublix/pre.html"
+        allowfullscreen
+        scrolling="no"
+        allow="autoplay; fullscreen; gamepad">
+    </iframe>
+</div>
+</body>
+</html>
